@@ -57,6 +57,13 @@ if (!fs.existsSync(path.resolve(__dirname, 'sounds'))) {
     }
   }));
 
+  await Promise.all(Object.values(genericSteps).map(async (step) => {
+    const wavPath = path.resolve(__dirname, 'sounds', `${step}.wav`);
+    if (!fs.existsSync(wavPath)) {
+      fs.writeFileSync(wavPath, await text2Wav('begin'));
+    }
+  }));
+
   for (const [stepName, duration, countdown] of allSteps) {
     const stepFilePath = path.resolve(__dirname, 'sounds', `${stepName}.wav`);
     process.stdout.write(stepName);
@@ -73,7 +80,7 @@ if (!fs.existsSync(path.resolve(__dirname, 'sounds'))) {
       await waitForStdin();
     }
   }
-  const doneFilePath = path.resolve(__dirname, 'sounds', 'done.wav');
+  const doneFilePath = path.resolve(__dirname, 'sounds', 'all done!.wav');
   player.play(doneFilePath);
   caffeinate.kill(0);
   process.exit(0);
