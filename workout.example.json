@@ -1,0 +1,13 @@
+{
+  "steps": [
+    ["12 caber tosses"],
+    ["6 cow lifts"],
+    ["350 second plank", 350, 5],
+    ["20 jumping jacks"],
+    ["12 reverse backflips"],
+    ["10 twerks"]
+  ],
+  "stepRest": 15,
+  "circuitRest": 60,
+  "circuits": 5
+}
